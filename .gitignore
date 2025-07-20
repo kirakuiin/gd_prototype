@@ -1,0 +1,32 @@
+# Godot 4+ specific ignores
+# 缓存和导入的资源
+.godot/
+
+# C# / Mono specific
+# 编译产物和用户相关的设置
+.mono/
+bin/
+obj/
+*.csproj.user
+*.sln
+
+# 导出的项目文件和构建产物
+# 这比单独的 /android/ 更通用
+builds/
+exports/
+*.pck
+*.exe
+*.html
+# 这个文件可能包含敏感信息或本地路径
+export_presets.cfg
+
+# IDE / 编辑器相关
+.vscode/
+.idea/
+
+# 操作系统相关文件
+.DS_Store
+Thumbs.db
+
+# 其他通用忽略
+*.log
