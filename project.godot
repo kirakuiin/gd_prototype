@@ -8,6 +8,12 @@
 
 config_version=5
 
+[action_enum_generator]
+
+output_path="assets"
+file_name="InputActions1.cs"
+class_name="EInputAction1"
+
 [addons]
 
 resources_spreadsheet_view/array_color_tint=100.0

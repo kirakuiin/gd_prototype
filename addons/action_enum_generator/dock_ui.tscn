@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckj3s1g8qyawe"]
+
+[ext_resource type="Script" path="res://addons/action_enum_generator/dock_ui.gd" id="1_8x4jg"]
+
+[node name="DockUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_8x4jg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "动作生成"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PathLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "生成路径:"
+size_flags_horizontal = 3
+
+[node name="PathContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PathLineEdit" type="LineEdit" parent="VBoxContainer/PathContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+placeholder_text = "输出路径"
+
+[node name="EditButton" type="Button" parent="VBoxContainer/PathContainer"]
+layout_mode = 2
+text = "编辑"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="FileNameLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "文件名:"
+size_flags_horizontal = 3
+
+[node name="FileNameContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="FileNameLineEdit" type="LineEdit" parent="VBoxContainer/FileNameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+placeholder_text = "文件名"
+
+[node name="FileNameEditButton" type="Button" parent="VBoxContainer/FileNameContainer"]
+layout_mode = 2
+text = "编辑"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ClassNameLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "类名:"
+size_flags_horizontal = 3
+
+[node name="ClassNameContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ClassNameLineEdit" type="LineEdit" parent="VBoxContainer/ClassNameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+placeholder_text = "类名"
+
+[node name="ClassNameEditButton" type="Button" parent="VBoxContainer/ClassNameContainer"]
+layout_mode = 2
+text = "编辑"
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="GenerateButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "生成输入动作"
+tooltip_text = "从项目输入映射生成 C# 枚举类"
