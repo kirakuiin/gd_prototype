@@ -2,7 +2,7 @@
 	"mcpServers": {
 	  "godot": {
 		"command": "node",
-		"args": ["C:/tools/godot-mcp/build/index.js"],
+		"args": ["E:/Project/Godot/godot-mcp/build/index.js"],
 		"env": {
 		  "DEBUG": "true"
 		},
