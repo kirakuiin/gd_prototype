@@ -30,3 +30,8 @@ Thumbs.db
 
 # 其他通用忽略
 *.log
+
+# MCP配置相关文件
+.mcp.json
+claude_mcp.json
+mcp_config.json
