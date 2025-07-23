@@ -1,15 +1,15 @@
 [gd_scene load_steps=8 format=3 uid="uid://cp7nj2eqqyw1j"]
 
-[ext_resource type="Texture2D" uid="uid://ca0gmugkvh4wk" path="res://assets/background/house.png" id="1_quokn"]
-[ext_resource type="PackedScene" uid="uid://21rsg7idbwy2" path="res://assets/dog/dog.tscn" id="1_t68oh"]
-[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_1gu6r"]
-[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_quokn"]
-[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_tqjkj"]
+[ext_resource type="Texture2D" uid="uid://ca0gmugkvh4wk" path="res://assets/background/house.png" id="1_8fifd"]
+[ext_resource type="PackedScene" uid="uid://21rsg7idbwy2" path="res://assets/dog/dog.tscn" id="2_fbfdu"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_e2wyb"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_3lt4q"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_prmqk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tqjkj"]
 
 [sub_resource type="Resource" id="Resource_rpe4u"]
-script = ExtResource("3_quokn")
+script = ExtResource("4_3lt4q")
 duration = 1.0
 transition = 0
 ease = 2
@@ -21,7 +21,7 @@ ease = 2
 [node name="Background" type="Sprite2D" parent="Environment"]
 position = Vector2(480, 270)
 scale = Vector2(2, 2)
-texture = ExtResource("1_quokn")
+texture = ExtResource("1_8fifd")
 metadata/_edit_lock_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Environment"]
@@ -32,11 +32,11 @@ physics_material_override = SubResource("PhysicsMaterial_tqjkj")
 position = Vector2(1, -13)
 polygon = PackedVector2Array(247, 341, 237, 400, 311, 494, 411, 526, 576, 522, 664, 475, 720, 370, 700, 272, 604, 181, 372, 179, 272, 254, 247, 341, 239, 268, 299, 186, 439, 149, 605, 157, 720, 256, 738, 380, 673, 489, 560, 543, 340, 531, 209, 407, 239, 270, 247, 342)
 
-[node name="Dog" parent="." instance=ExtResource("1_t68oh")]
+[node name="Dog" parent="." instance=ExtResource("2_fbfdu")]
 position = Vector2(481, 332)
 
 [node name="PhantomCamera2D" type="Node2D" parent="Dog"]
-script = ExtResource("2_1gu6r")
+script = ExtResource("3_e2wyb")
 tween_resource = SubResource("Resource_rpe4u")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -46,4 +46,4 @@ position = Vector2(481, 332)
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
 process_physics_priority = 300
-script = ExtResource("4_tqjkj")
+script = ExtResource("5_prmqk")
