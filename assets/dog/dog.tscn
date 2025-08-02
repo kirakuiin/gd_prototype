@@ -296,7 +296,7 @@ metadata/_custom_type_script = "uid://da7rgg7jt87b0"
 script = ExtResource("6_brxyy")
 Name = "New Input Set"
 Description = ""
-ActionMappings = [ExtResource("5_0g0om"), SubResource("Resource_0g0om"), SubResource("Resource_brxyy")]
+ActionMappings = Array[ExtResource("4_0g0om")]([ExtResource("5_0g0om"), SubResource("Resource_0g0om"), SubResource("Resource_brxyy")])
 metadata/_custom_type_script = "uid://i8q2sng6i5df"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjmiw"]

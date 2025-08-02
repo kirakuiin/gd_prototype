@@ -30,7 +30,7 @@ resources_spreadsheet_view/freeze_first_column=true
 [application]
 
 config/name="gd_prototype"
-run/main_scene="uid://cp7nj2eqqyw1j"
+run/main_scene="uid://cf8ryavb4nmac"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
