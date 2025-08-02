@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InputActionMapping" load_steps=2 format=3 uid="uid://r81rb6onqa7m"]
+
+[ext_resource type="Script" uid="uid://da7rgg7jt87b0" path="res://assets/components/InputActionMapping.cs" id="1_x657j"]
+
+[resource]
+script = ExtResource("1_x657j")
+InputType = 3
+ActionName = "move"
+AnalogNegativeX = "left"
+AnalogPositiveX = "right"
+AnalogNegativeY = "up"
+AnalogPositiveY = "down"
+metadata/_custom_type_script = "uid://da7rgg7jt87b0"

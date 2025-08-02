@@ -1,29 +1,20 @@
 using Godot;
 using gd_prototype.assets.components;
 
-namespace gd_prototype.assets.dog;
+namespace gd_prototype.assets.plane;
 
 /// <summary>
 /// 狗狗控制器
 /// </summary>
-public partial class Dog : CharacterBody2D
+public partial class Plane : CharacterBody2D
 {
     [Export]
     private InputComponent _inputComponent;
     
     [Export]
-    private AnimationTree _animationTree;
-
-    [Export]
     public float Speed { get; set; } = 100.0f;
 
     private Vector2 _direction = Vector2.Zero;
-
-    private bool is_moving = false;
-
-    private string action = "";
-    
-    private string direction = "right";
 
     public override void _Ready()
     {
@@ -66,37 +57,17 @@ public partial class Dog : CharacterBody2D
             case EInputAction.Move:
                 _direction = (Vector2)argv;
                 break;
-            case EInputAction.Sit:
-                action = "sit";
-                break;
-            case EInputAction.Find:
-                action = "find";
-                break;
         }
         _direction = _direction.Normalized();
-        PlayAnimation(); 
+        PlayAnimation();
     }
 
     private void PlayAnimation()
     {
-        is_moving = _direction != Vector2.Zero;
-        action = is_moving ? "" : action;
-        if (double.Abs(_direction.X) > 0.3)
+        if (_direction != Vector2.Zero)
         {
-            direction = "horizon";
-            GetNode<Sprite2D>("Sprite2D").FlipH = _direction.X < 0;
-        }
-        else if (_direction.Y < 0)
-        {
-            direction = "up";
-        }
-        else if (_direction.Y > 0)
-        {
-            direction = "down";
-        }
-        else
-        {
-            direction = "";
+            var angle = -_direction.AngleTo(Vector2.Up);
+            Rotation = angle;
         }
     }
     

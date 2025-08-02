@@ -19,11 +19,10 @@ public partial class InputActionMapping : Resource
         Analog    // 对应模拟输入，如手柄摇杆，持续提供 Vector2 值
     }
 
+    // --- 布尔类型输入 (Pressed, Released, Held, Analog) --- 
     [Export]
     public EInputType InputType { get; set; } = EInputType.Pressed;
 
-    // --- 布尔类型输入 (Pressed, Released, Held) --- 
-    [ExportGroup("布尔/按键输入设置")]
     [Export]
     public string ActionName { get; set; } = "";
 

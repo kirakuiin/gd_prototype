@@ -12,10 +12,10 @@ namespace gd_prototype.assets.components;
 public partial class InputComponent : Node
 {
 	/// <summary>
-	/// InputActionMapping 资源数组，定义了该组件的输入行为。
+	/// 一组定义好的操作集合
 	/// </summary>
 	[Export]
-	public Array<InputActionMapping> Mappings { get; set; } = [];
+	public InputSet InputSet { get; set; }
 
 	/// <summary>
 	/// 如果为 true，该组件将处理输入。可用于临时禁用输入处理。
@@ -27,6 +27,8 @@ public partial class InputComponent : Node
 	/// 当输入检测到时触发
 	/// </summary>
 	public event Action<string, Variant?> OnInputTriggered;
+	
+	private Array<InputActionMapping> Mappings => InputSet == null ? [] : InputSet.ActionMappings;
 
 	public override void _Input(InputEvent @event)
 	{
@@ -95,4 +97,23 @@ public partial class InputComponent : Node
 	{
 		OnInputTriggered?.Invoke(mapping.ActionName, argument);
 	}
+	
+	public override string[] _GetConfigurationWarnings()
+	{
+      var warnings = new System.Collections.Generic.List<string>();
+
+      if (InputSet == null)
+      {
+          warnings.Add("未指定输入集资源 (InputSet)");
+      }
+      else
+      {
+          if (InputSet.ActionMappings.Count == 0)
+          {
+              warnings.Add("输入集不包含任何动作映射");
+          }
+      }
+
+      return warnings.ToArray();
+  }
 }

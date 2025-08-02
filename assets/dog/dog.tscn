@@ -1,9 +1,11 @@
-[gd_scene load_steps=44 format=3 uid="uid://21rsg7idbwy2"]
+[gd_scene load_steps=46 format=3 uid="uid://21rsg7idbwy2"]
 
 [ext_resource type="Script" uid="uid://c75trbr10hd8y" path="res://assets/dog/Dog.cs" id="1_fljji"]
 [ext_resource type="Texture2D" uid="uid://blk8cty0wc3hr" path="res://assets/dog/dog_sprite.png" id="1_pmayg"]
 [ext_resource type="PackedScene" uid="uid://bipxgt6468dmr" path="res://assets/components/InputComponent.tscn" id="3_q8kr8"]
 [ext_resource type="Script" uid="uid://da7rgg7jt87b0" path="res://assets/components/InputActionMapping.cs" id="4_0g0om"]
+[ext_resource type="Resource" uid="uid://r81rb6onqa7m" path="res://assets/common/direction_input.tres" id="5_0g0om"]
+[ext_resource type="Script" uid="uid://i8q2sng6i5df" path="res://assets/components/InputSet.cs" id="6_brxyy"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q8kr8"]
 animation = &"find"
@@ -270,17 +272,17 @@ _data = {
 &"walk_up": SubResource("Animation_q8kr8")
 }
 
-[sub_resource type="Resource" id="Resource_eyct2"]
+[sub_resource type="Resource" id="Resource_0g0om"]
 script = ExtResource("4_0g0om")
-InputType = 3
-ActionName = "move"
-AnalogNegativeX = "left"
-AnalogPositiveX = "right"
-AnalogNegativeY = "up"
-AnalogPositiveY = "down"
+InputType = 0
+ActionName = "find"
+AnalogNegativeX = ""
+AnalogPositiveX = ""
+AnalogNegativeY = ""
+AnalogPositiveY = ""
 metadata/_custom_type_script = "uid://da7rgg7jt87b0"
 
-[sub_resource type="Resource" id="Resource_4j41t"]
+[sub_resource type="Resource" id="Resource_brxyy"]
 script = ExtResource("4_0g0om")
 InputType = 0
 ActionName = "sit"
@@ -290,15 +292,12 @@ AnalogNegativeY = ""
 AnalogPositiveY = ""
 metadata/_custom_type_script = "uid://da7rgg7jt87b0"
 
-[sub_resource type="Resource" id="Resource_23hhi"]
-script = ExtResource("4_0g0om")
-InputType = 0
-ActionName = "find"
-AnalogNegativeX = ""
-AnalogPositiveX = ""
-AnalogNegativeY = ""
-AnalogPositiveY = ""
-metadata/_custom_type_script = "uid://da7rgg7jt87b0"
+[sub_resource type="Resource" id="Resource_x2xic"]
+script = ExtResource("6_brxyy")
+Name = "New Input Set"
+Description = ""
+ActionMappings = [ExtResource("5_0g0om"), SubResource("Resource_0g0om"), SubResource("Resource_brxyy")]
+metadata/_custom_type_script = "uid://i8q2sng6i5df"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjmiw"]
 size = Vector2(17, 11)
@@ -328,7 +327,7 @@ libraries = {
 }
 
 [node name="InputComponent" parent="." instance=ExtResource("3_q8kr8")]
-Mappings = Array[ExtResource("4_0g0om")]([SubResource("Resource_eyct2"), SubResource("Resource_4j41t"), SubResource("Resource_23hhi")])
+InputSet = SubResource("Resource_x2xic")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -5.5)

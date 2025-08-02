@@ -5,4 +5,5 @@ public class EInputAction {
 	public const string Right = "right";
 	public const string Find = "find";
 	public const string Sit = "sit";
+	public const string Move = "move";
 }
