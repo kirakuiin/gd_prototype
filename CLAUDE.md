@@ -6,7 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 项目使用C#作为主要脚本语言，gdscript作为辅助编程语言
 - 所有脚本注释均使用中文编写
 - 所有文件的编码均为UTF-8
-- 
+- 当你在制定计划时，如果有任何疑问可以向向开发者反复提问，直到你弄清楚了所有条件，然后详细的列出你的计划供开发者查阅
+
 ## 交互
 
 - 当我提及到提交，git等内容时，使用git-commit-operator agent来处理

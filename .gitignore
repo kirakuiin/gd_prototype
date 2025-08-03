@@ -23,6 +23,7 @@ export_presets.cfg
 # IDE / 编辑器相关
 .vscode/
 .idea/
+*.DotSettings.user
 
 # 操作系统相关文件
 .DS_Store

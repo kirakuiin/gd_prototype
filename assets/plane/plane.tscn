@@ -9,8 +9,7 @@
 atlas = ExtResource("2_c3naw")
 region = Rect2(36, 72, 24, 17)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7igsx"]
-size = Vector2(20, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_oqb35"]
 
 [node name="Plane" type="CharacterBody2D" node_paths=PackedStringArray("_inputComponent")]
 collision_layer = 256
@@ -22,7 +21,7 @@ texture = SubResource("AtlasTexture_1b8qw")
 region_rect = Rect2(0, 4, 32.3549, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_7igsx")
+shape = SubResource("CircleShape2D_oqb35")
 
 [node name="InputComponent" type="Node" parent="."]
 script = ExtResource("3_0wugb")
