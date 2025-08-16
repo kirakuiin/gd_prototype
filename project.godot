@@ -37,7 +37,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
+SignalLens="*res://addons/signal_lens/autoload/signal_lens_autoload.gd"
 
 [display]
 
@@ -52,7 +52,7 @@ project/assembly_name="gd_prototype"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/SignalVisualizer/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/action_enum_generator/plugin.cfg", "res://addons/godot_resource_groups/plugin.cfg", "res://addons/inspector_tabs/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/action_enum_generator/plugin.cfg", "res://addons/gaea/plugin.cfg", "res://addons/godot_resource_groups/plugin.cfg", "res://addons/inspector_tabs/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg", "res://addons/signal_lens/plugin.cfg")
 
 [godot_resource_groups]
 
