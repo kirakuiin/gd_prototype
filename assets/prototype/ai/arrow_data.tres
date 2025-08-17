@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ArrowData" load_steps=2 format=3 uid="uid://c8v5wwvccbskj"]
+
+[ext_resource type="Script" uid="uid://dnrxlrqyuc5e3" path="res://assets/prototype/ai/ArrowData.cs" id="1_vulba"]
+
+[resource]
+script = ExtResource("1_vulba")
+Speed = 200.0
+Damage = 10.0
+metadata/_custom_type_script = "uid://dnrxlrqyuc5e3"

@@ -1,36 +1,32 @@
 @tool
-class_name AnimatedSprite2DState
+class_name AnimationPlayerState
 extends LimboState
 ## 实现了[LimboState]的管理帧动画[SpriteFrames]的状态类
 
-## 动画开始事件
-const EVENT_ANIM_START: StringName = &"start";
-## 动画结束事件
-const EVENT_ANIM_FINISH: StringName = &"finish";
-## 动画击中事件
-const EVENT_ANIM_HIT: StringName = &"hit";
-## 特殊动画事件
-const EVENT_ANIM_SPECIAL: StringName = &"special";
+
+## 播放完毕释放的信号(仅单次会触发)
+@export var event: String = "finish"
 
 
 ## 帧动画播放器
-var _anim_player: AnimatedSprite2D
+var _anim_player: AnimationPlayer
 
 
 ## 动画名称
 var _anim_name: String
 
 
-func _setup() -> void:
-	pass
-
-
 func _enter() -> void:
+	_anim_player.animation_finished.connect(_on_anim_end)
 	_anim_player.play(_anim_name)
 	
-
+	
 func _exit() -> void:
-	pass
+	_anim_player.animation_finished.disconnect(_on_anim_end)
+
+
+func _on_anim_end(anim_name: StringName) -> void:
+	dispatch(event)	
 	
 	
 # 编辑器使用逻辑
@@ -43,7 +39,7 @@ func _get_property_list() -> Array[Dictionary]:
 	properties.append({
 			"name": "anim_player",
 			"hint": PROPERTY_HINT_NODE_TYPE,
-			"hint_string": &"AnimatedSprite2D",
+			"hint_string": &"AnimationPlayer",
 			"type": TYPE_OBJECT,
 	})
 	properties.append({
@@ -57,10 +53,10 @@ func _get_property_list() -> Array[Dictionary]:
 
 	
 func get_animation_names() -> PackedStringArray:
-	if _anim_player == null or _anim_player.sprite_frames == null:
+	if _anim_player == null or _anim_player.get_animation_list().is_empty():
 		return []
 
-	return _anim_player.sprite_frames.get_animation_names()
+	return _anim_player.get_animation_list()
 
 
 func _notification(what: int) -> void:
@@ -73,7 +69,7 @@ func _notification(what: int) -> void:
 func _set(property: StringName, value: Variant) -> bool:
 	update_configuration_warnings()
 	if property == "anim_player":
-		_anim_player = value as AnimatedSprite2D
+		_anim_player = value as AnimationPlayer
 		return true
 	if property == "anim_name":
 		_anim_name = str(value)
@@ -93,9 +89,9 @@ func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = PackedStringArray()
 	
 	if _anim_player == null:
-		warnings.append("需要指定TargetSprite(AnimatedSprite2D)")
+		warnings.append("需要指定Player(AnimationPlayer)")
 	elif get_animation_names().size() == 0:
-		warnings.append("目标AnimatedSprite2D没有动画")
+		warnings.append("目标AnimationPlayer没有动画")
 	elif _anim_name == "":
 		warnings.append("请选择一个动画")
 
