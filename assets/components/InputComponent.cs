@@ -26,9 +26,17 @@ public partial class InputComponent : Node
 	/// <summary>
 	/// 当输入检测到时触发
 	/// </summary>
-	public event Action<string, Variant?> OnInputTriggered;
+	public event Action<string, Variant> OnInputTriggered;
+	
+	/// <summary>
+	/// 当输入检测到时触发(string, variant)
+	/// </summary>
+	[Signal]
+	public delegate void InputTriggeredEventHandler(string inputName, Variant inputValue);
 	
 	private Array<InputActionMapping> Mappings => InputSet == null ? [] : InputSet.ActionMappings;
+
+	private Vector2 _prevAnalogVector2 = Vector2.Inf;
 
 	public override void _Input(InputEvent @event)
 	{
@@ -49,7 +57,7 @@ public partial class InputComponent : Node
 				// 只处理离散的按键事件
 				case InputActionMapping.EInputType.Pressed when Input.IsActionJustPressed(mapping.ActionName):
 				case InputActionMapping.EInputType.Released when Input.IsActionJustReleased(mapping.ActionName):
-					TriggerResponse(mapping);
+					TriggerResponse(mapping, 0);
 					break;
 			}
 		}
@@ -73,7 +81,7 @@ public partial class InputComponent : Node
 			{
 				// 处理持续按住的按键
 				case InputActionMapping.EInputType.Held when Input.IsActionPressed(mapping.ActionName):
-					TriggerResponse(mapping);
+					TriggerResponse(mapping, 0);
 					break;
 				// 处理模拟输入（摇杆）
 				case InputActionMapping.EInputType.Analog:
@@ -84,18 +92,22 @@ public partial class InputComponent : Node
 						mapping.AnalogNegativeY, 
 						mapping.AnalogPositiveY
 					);
-
-					TriggerResponse(mapping, analogVector);
-
+					if (!(analogVector == _prevAnalogVector2 && analogVector == Vector2.Zero))
+					{
+						// 如果模拟输入不持续为0，则触发响应
+						TriggerResponse(mapping, analogVector);
+					}
+					_prevAnalogVector2 = analogVector;
 					break;
 				}
 			}
 		}
 	}
 
-	private void TriggerResponse(InputActionMapping mapping, Variant? argument = null)
+	private void TriggerResponse(InputActionMapping mapping, Variant argument)
 	{
 		OnInputTriggered?.Invoke(mapping.ActionName, argument);
+		EmitSignal(SignalName.InputTriggered, mapping.ActionName, argument);
 	}
 	
 	public override string[] _GetConfigurationWarnings()

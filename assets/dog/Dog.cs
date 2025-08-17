@@ -58,7 +58,7 @@ public partial class Dog : CharacterBody2D
     }
 
     // 这个方法处理来自InputComponent的输入事件
-    private void OnInputTriggered(string actionName, Variant? argv)
+    private void OnInputTriggered(string actionName, Variant argv)
     {
         // 我们累加方向，而不是直接设置速度
         switch (actionName)

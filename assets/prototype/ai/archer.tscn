@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://bcrqvkaqhepsw"]
+
+[ext_resource type="Script" uid="uid://i7hygvxqj0ck" path="res://assets/prototype/ai/archer.gd" id="1_0e5n4"]
+[ext_resource type="SpriteFrames" uid="uid://dredpdn07y0uq" path="res://assets/prototype/ai/Archer.aseprite" id="1_tv3mt"]
+[ext_resource type="Script" uid="uid://bnegqjm6stckg" path="res://assets/prototype/ai/animated_sprite2d_state.gd" id="3_bxmaf"]
+[ext_resource type="Script" uid="uid://cyeyvgo2jfmys" path="res://assets/components/InputComponent.cs" id="5_bkhgw"]
+[ext_resource type="Resource" uid="uid://r81rb6onqa7m" path="res://assets/common/direction_input.tres" id="6_bkhgw"]
+[ext_resource type="Script" uid="uid://da7rgg7jt87b0" path="res://assets/components/InputActionMapping.cs" id="6_dk7h7"]
+[ext_resource type="Script" uid="uid://i8q2sng6i5df" path="res://assets/components/InputSet.cs" id="7_em0gr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tv3mt"]
+radius = 18.0
+height = 58.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xs0cr"]
+radius = 7.0
+height = 34.0
+
+[sub_resource type="Resource" id="Resource_bkhgw"]
+script = ExtResource("6_dk7h7")
+InputType = 0
+ActionName = "action"
+AnalogNegativeX = ""
+AnalogPositiveX = ""
+AnalogNegativeY = ""
+AnalogPositiveY = ""
+metadata/_custom_type_script = "uid://da7rgg7jt87b0"
+
+[sub_resource type="Resource" id="Resource_xpjnb"]
+script = ExtResource("7_em0gr")
+Name = "弓箭手"
+Description = ""
+ActionMappings = [ExtResource("6_bkhgw"), SubResource("Resource_bkhgw")]
+metadata/_custom_type_script = "uid://i8q2sng6i5df"
+
+[node name="Archer" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "idle_state", "run_state", "shoot_state", "input_com")]
+script = ExtResource("1_0e5n4")
+move_speed = 150
+state_machine = NodePath("AnimHSM")
+idle_state = NodePath("AnimHSM/Idle")
+run_state = NodePath("AnimHSM/Run")
+shoot_state = NodePath("AnimHSM/Shoot")
+input_com = NodePath("InputComponent")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -32)
+sprite_frames = ExtResource("1_tv3mt")
+animation = &"Idle"
+
+[node name="HurtBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -35)
+shape = SubResource("CapsuleShape2D_tv3mt")
+
+[node name="MoveBox" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_xs0cr")
+
+[node name="AnimHSM" type="LimboHSM" parent="."]
+
+[node name="Idle" type="LimboState" parent="AnimHSM" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("3_bxmaf")
+anim_player = NodePath("../../AnimatedSprite2D")
+anim_name = "Idle"
+metadata/_custom_type_script = "uid://bnegqjm6stckg"
+
+[node name="Shoot" type="LimboState" parent="AnimHSM" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("3_bxmaf")
+anim_player = NodePath("../../AnimatedSprite2D")
+anim_name = "Shoot"
+metadata/_custom_type_script = "uid://bnegqjm6stckg"
+
+[node name="Run" type="LimboState" parent="AnimHSM" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("3_bxmaf")
+anim_player = NodePath("../../AnimatedSprite2D")
+anim_name = "Run "
+metadata/_custom_type_script = "uid://bnegqjm6stckg"
+
+[node name="InputComponent" type="Node" parent="."]
+script = ExtResource("5_bkhgw")
+InputSet = SubResource("Resource_xpjnb")
+metadata/_custom_type_script = "uid://cyeyvgo2jfmys"

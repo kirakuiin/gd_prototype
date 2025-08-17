@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://180wp38l7hax"
+path="res://.godot/imported/Warrior.aseprite-bfbb76e4d2d420b658b61f57cb7ad4f5.res"
+
+[deps]
+
+source_file="res://assets/prototype/ai/Warrior.aseprite"
+dest_files=["res://.godot/imported/Warrior.aseprite-bfbb76e4d2d420b658b61f57cb7ad4f5.res"]
+
+[params]
+
