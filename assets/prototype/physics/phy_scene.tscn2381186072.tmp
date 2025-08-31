@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxt1uewqbno0d"]
+
+[ext_resource type="PackedScene" uid="uid://b2dggrhn5eha4" path="res://assets/prototype/physics/static_body.tscn" id="1_lf72j"]
+[ext_resource type="PackedScene" uid="uid://bkv0f6f3prfm8" path="res://assets/prototype/physics/rigid_body.tscn" id="2_r35hl"]
+[ext_resource type="PackedScene" uid="uid://b58etgchq1rc5" path="res://assets/prototype/physics/area2d.tscn" id="3_6fepw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2bmxu"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r35hl"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6fepw"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h8yro"]
+normal = Vector2(1, 0)
+
+[node name="PhyScene" type="Node2D"]
+
+[node name="StaticBody" parent="." instance=ExtResource("1_lf72j")]
+position = Vector2(274, 171)
+origin_color = Color(0.1577, 0.56108, 0.83, 1)
+collide_color = Color(0.9, 0.4929, 0.369, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, 270)
+
+[node name="RigidBody" parent="." instance=ExtResource("2_r35hl")]
+position = Vector2(502, 130)
+origin_color = Color(0.89, 0.853065, 0.1513, 1)
+collide_color = Color(0.901961, 0.494118, 0.368627, 1)
+
+[node name="RigidBody2" parent="." instance=ExtResource("2_r35hl")]
+position = Vector2(501, 228)
+origin_color = Color(0.89, 0.853065, 0.1513, 1)
+collide_color = Color(0.901961, 0.494118, 0.368627, 1)
+
+[node name="Area2D" parent="." instance=ExtResource("3_6fepw")]
+position = Vector2(125, 219)
+origin_color = Color(0.3357, 0.9, 0.306, 1)
+collide_color = Color(0.87, 0.3219, 0.3219, 1)
+
+[node name="Area2D2" parent="." instance=ExtResource("3_6fepw")]
+position = Vector2(126, 298)
+origin_color = Color(0.3357, 0.9, 0.306, 1)
+collide_color = Color(0.87, 0.3219, 0.3219, 1)
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
+collision_layer = 4294967295
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_2bmxu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(0, 540)
+shape = SubResource("WorldBoundaryShape2D_r35hl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(959, 278)
+shape = SubResource("WorldBoundaryShape2D_6fepw")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(0, 323)
+shape = SubResource("WorldBoundaryShape2D_h8yro")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "layer决定了自身位于的层数，而mask决定了自身会检测到同哪些层的碰撞
+"
+
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "只有A可以检测到B这代表着当它们碰撞时，A会触发碰撞相关物理模拟，而B不会，但是如果碰撞信号在两个对象上
+都会触发"

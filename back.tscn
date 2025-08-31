@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c77r5b83hk8of"]
+
+[ext_resource type="Theme" uid="uid://dw6belorvybsy" path="res://assets/ui/themes/default.tres" id="1_x3xug"]
+
+[node name="Button" type="Button"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -73.0
+offset_bottom = 32.0
+grow_horizontal = 0
+theme = ExtResource("1_x3xug")
+text = "返回"

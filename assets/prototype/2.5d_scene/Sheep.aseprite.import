@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c2gpvybr2vb5h"
+path="res://.godot/imported/Sheep.aseprite-ef7872034bc7bef06cf9069235f844fb.res"
+
+[deps]
+
+source_file="res://assets/prototype/2.5d_scene/Sheep.aseprite"
+dest_files=["res://.godot/imported/Sheep.aseprite-ef7872034bc7bef06cf9069235f844fb.res"]
+
+[params]
+

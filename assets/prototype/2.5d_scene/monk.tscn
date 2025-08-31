@@ -1,0 +1,235 @@
+[gd_scene load_steps=17 format=3 uid="uid://dqkm65vmr7gbn"]
+
+[ext_resource type="Script" uid="uid://bocdq2oh31307" path="res://assets/prototype/2.5d_scene/monk.gd" id="1_8uj7r"]
+[ext_resource type="SpriteFrames" uid="uid://2xw0bo3mtcts" path="res://assets/prototype/2.5d_scene/Monk.aseprite" id="2_8uj7r"]
+[ext_resource type="Script" uid="uid://bnegqjm6stckg" path="res://assets/prototype/2.5d_scene/animation_player_state.gd" id="3_jfhin"]
+[ext_resource type="Script" uid="uid://cyeyvgo2jfmys" path="res://assets/components/InputComponent.cs" id="4_i4mh3"]
+[ext_resource type="Script" uid="uid://da7rgg7jt87b0" path="res://assets/components/InputActionMapping.cs" id="5_3y2ql"]
+[ext_resource type="Resource" uid="uid://r81rb6onqa7m" path="res://assets/common/direction_input.tres" id="6_8dc3a"]
+[ext_resource type="Script" uid="uid://i8q2sng6i5df" path="res://assets/components/InputSet.cs" id="7_xwst0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tv3mt"]
+radius = 22.0
+height = 56.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xs0cr"]
+radius = 6.0
+height = 46.0
+
+[sub_resource type="Resource" id="Resource_bkhgw"]
+script = ExtResource("5_3y2ql")
+InputType = 0
+ActionName = "action"
+AnalogNegativeX = ""
+AnalogPositiveX = ""
+AnalogNegativeY = ""
+AnalogPositiveY = ""
+metadata/_custom_type_script = "uid://da7rgg7jt87b0"
+
+[sub_resource type="Resource" id="Resource_xpjnb"]
+script = ExtResource("7_xwst0")
+Name = "武僧"
+Description = ""
+ActionMappings = Array[ExtResource("5_3y2ql")]([ExtResource("6_8dc3a"), SubResource("Resource_bkhgw")])
+metadata/_custom_type_script = "uid://i8q2sng6i5df"
+
+[sub_resource type="Animation" id="Animation_sb5wu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8uj7r"]
+resource_name = "heal"
+length = 1.10001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Heal"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_x1mjm"]
+resource_name = "idle"
+length = 0.60001
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_52t30"]
+resource_name = "run"
+length = 0.40001
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xpjnb"]
+_data = {
+&"RESET": SubResource("Animation_sb5wu"),
+&"heal": SubResource("Animation_8uj7r"),
+&"idle": SubResource("Animation_x1mjm"),
+&"run": SubResource("Animation_52t30")
+}
+
+[node name="Monk" type="CharacterBody2D" node_paths=PackedStringArray("animator", "animate_sprite", "input_com", "state_machine", "idle_state", "run_state", "heal_state")]
+script = ExtResource("1_8uj7r")
+move_speed = 150
+animator = NodePath("AnimationPlayer")
+animate_sprite = NodePath("AnimatedSprite2D")
+input_com = NodePath("InputComponent")
+state_machine = NodePath("AnimHSM")
+idle_state = NodePath("AnimHSM/Idle")
+run_state = NodePath("AnimHSM/Run")
+heal_state = NodePath("AnimHSM/Heal")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -32)
+sprite_frames = ExtResource("2_8uj7r")
+animation = &"Idle"
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"output_section": false,
+"pending_changes": {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "",
+"source_uid": -1
+},
+"slice_section": false
+}
+
+[node name="HurtBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -35)
+shape = SubResource("CapsuleShape2D_tv3mt")
+
+[node name="MoveBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_xs0cr")
+
+[node name="AnimHSM" type="LimboHSM" parent="."]
+
+[node name="Idle" type="LimboState" parent="AnimHSM" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("3_jfhin")
+event = ""
+anim_player = NodePath("../../AnimationPlayer")
+anim_name = "idle"
+metadata/_custom_type_script = "uid://bnegqjm6stckg"
+
+[node name="Run" type="LimboState" parent="AnimHSM" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("3_jfhin")
+event = ""
+anim_player = NodePath("../../AnimationPlayer")
+anim_name = "run"
+metadata/_custom_type_script = "uid://bnegqjm6stckg"
+
+[node name="Heal" type="LimboState" parent="AnimHSM" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("3_jfhin")
+event = "idle"
+anim_player = NodePath("../../AnimationPlayer")
+anim_name = "heal"
+metadata/_custom_type_script = "uid://bnegqjm6stckg"
+
+[node name="InputComponent" type="Node" parent="."]
+script = ExtResource("4_i4mh3")
+InputSet = SubResource("Resource_xpjnb")
+metadata/_custom_type_script = "uid://cyeyvgo2jfmys"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xpjnb")
+}

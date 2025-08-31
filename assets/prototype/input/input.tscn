@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5adm0mo67c53"]
 
 [ext_resource type="Texture2D" uid="uid://ca0gmugkvh4wk" path="res://assets/world/house.png" id="1_cxplj"]
-[ext_resource type="PackedScene" uid="uid://21rsg7idbwy2" path="res://assets/dog/dog.tscn" id="2_q1eu1"]
+[ext_resource type="PackedScene" uid="uid://21rsg7idbwy2" path="res://assets/prototype/input/dog/dog.tscn" id="2_q1eu1"]
 [ext_resource type="Theme" uid="uid://dw6belorvybsy" path="res://assets/ui/themes/default.tres" id="3_8fifd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tqjkj"]
@@ -45,7 +45,7 @@ theme = ExtResource("3_8fifd")
 bbcode_enabled = true
 text = "操作说明:
 W, S, A, D 四向移动，支持组合
-Q: 寻找
+Q: 按住寻找，松开还原
 E: 坐下
 "
 fit_content = true

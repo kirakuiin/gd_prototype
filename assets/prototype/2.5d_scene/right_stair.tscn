@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7uu4kkl2lu7m"]
+
+[ext_resource type="Script" uid="uid://dilma6t7cm2s4" path="res://assets/prototype/2.5d_scene/stair.gd" id="1_k0uwy"]
+[ext_resource type="Texture2D" uid="uid://gwumjutivjmt" path="res://assets/prototype/2.5d_scene/Tilemap_color1.png" id="2_vor0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4v27"]
+size = Vector2(3, 49)
+
+[node name="Stair" type="Node2D"]
+script = ExtResource("1_k0uwy")
+leave_dir = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 30)
+texture = ExtResource("2_vor0o")
+region_enabled = true
+region_rect = Rect2(1152, 64, 63, 123)
+
+[node name="Entrance" type="Area2D" parent="Sprite2D"]
+position = Vector2(0, 62)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Entrance"]
+position = Vector2(27, -36)
+shape = SubResource("RectangleShape2D_v4v27")
+
+[node name="Ground1" type="StaticBody2D" parent="Sprite2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Ground1"]
+position = Vector2(-3, 0)
+polygon = PackedVector2Array(-28, -1, 31, -1, 31, 1, -28, 1)
+
+[node name="Floor1" type="StaticBody2D" parent="Sprite2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Floor1"]
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-28, -1, 31, -58, 31, -55, -28, 1)
+
+[node name="Ground2" type="StaticBody2D" parent="Sprite2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Ground2"]
+position = Vector2(-2, 51)
+polygon = PackedVector2Array(-28, -1, -5.61275, -1, 31, -1, 31, 1, -28, 1)
+
+[node name="Floor2" type="StaticBody2D" parent="Sprite2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Floor2"]
+position = Vector2(0, 51)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-28, -1, 32, -47, 32, -45, -28, 1)

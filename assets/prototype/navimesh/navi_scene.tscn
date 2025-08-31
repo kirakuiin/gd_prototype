@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3ttavvc55lyg"]
+
+[ext_resource type="Script" uid="uid://dwgyqnv3cgbbi" path="res://assets/prototype/navimesh/navi_player.gd" id="1_ifd52"]
+[ext_resource type="Shader" uid="uid://c3t1nrnvtkb05" path="res://assets/prototype/physics/circle_color.gdshader" id="1_kn2ov"]
+[ext_resource type="Texture2D" uid="uid://cev2p45ms0un7" path="res://assets/prototype/2.5d_scene/Water Background color.png" id="2_ifd52"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ifd52"]
+vertices = PackedVector2Array(544, 40, 544, 472, 452.797, 257.969, 192, 472, 311.68, 338.609, 192, 40, 322.109, 157.43, 304.563, 165.477, 295.5, 328.609)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(2, 1, 3, 4), PackedInt32Array(5, 0, 2, 6), PackedInt32Array(5, 6, 7), PackedInt32Array(3, 5, 7, 8), PackedInt32Array(3, 8, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(176, 24, 176, 488, 560, 488, 560, 24)])
+agent_radius = 16.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_l08d1"]
+vertices = PackedVector2Array(740, 428, 540, 428, 540, 404, 724, 404, 740, 108, 724, 132, 540, 108, 540, 132)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(524, 92, 524, 444, 756, 444, 756, 92)])
+agent_radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gedwr"]
+radius = 16.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l08d1"]
+shader = ExtResource("1_kn2ov")
+shader_parameter/color = Color(0.3705, 0.379817, 0.65, 1)
+shader_parameter/radius = 0.5
+
+[node name="NaviScene" type="Node2D"]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Line2d" type="Line2D" parent="World"]
+position = Vector2(972, 380)
+points = PackedVector2Array(-632, -376, -632, 88, -248, 88, -248, -376)
+closed = true
+width = 4.0
+
+[node name="Line2d2" type="Line2D" parent="World"]
+position = Vector2(980, 376)
+points = PackedVector2Array(-268, -308, -52, -308, -52, 44, -268, 44, -268, -12, -100, -12, -100, -252, -268, -252)
+width = 4.0
+
+[node name="Layer1" type="NavigationRegion2D" parent="World"]
+position = Vector2(164, -20)
+navigation_polygon = SubResource("NavigationPolygon_ifd52")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="World/Layer1"]
+vertices = PackedVector2Array(320, 176, 312, 320, 424, 256)
+affect_navigation_mesh = true
+avoidance_layers = 3
+
+[node name="NavigationObstacle2D2" type="NavigationObstacle2D" parent="World/Layer1"]
+position = Vector2(408, 56)
+radius = 29.33
+avoidance_layers = 3
+
+[node name="Layer2" type="NavigationRegion2D" parent="World"]
+position = Vector2(172, -24)
+navigation_polygon = SubResource("NavigationPolygon_l08d1")
+navigation_layers = 2
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="World/Layer2"]
+vertices = PackedVector2Array(540, 148, 708, 148, 708, 388, 540, 388)
+affect_navigation_mesh = true
+avoidance_enabled = false
+avoidance_layers = 0
+
+[node name="NavigationLink2D" type="NavigationLink2D" parent="World"]
+navigation_layers = 3
+start_position = Vector2(696, 96)
+end_position = Vector2(728, 96)
+travel_cost = 0.1
+
+[node name="NavigationLink2D2" type="NavigationLink2D" parent="World"]
+navigation_layers = 3
+start_position = Vector2(696, 392)
+end_position = Vector2(720, 392)
+travel_cost = 0.1
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(360, 32)
+script = ExtResource("1_ifd52")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Player"]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+navigation_layers = 3
+avoidance_enabled = true
+radius = 16.0
+avoidance_layers = 3
+avoidance_mask = 3
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0.906667, 0.3, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_gedwr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+material = SubResource("ShaderMaterial_l08d1")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ifd52")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 224.0
+offset_bottom = 536.0
+text = "1. 玩家在navimesh中的半径：在NavigationPolygon/Agents/radius中设置
+2. NavigationObstacle2D的mesh可以静态的烘焙到网格中
+3. 避障是运行时的概念，和烘焙网格无关
+4. 避障需要使用agent.set_veolcity接口来得到一个实际的避障速度
+5. Link用来连接两个不同的层"
+autowrap_mode = 2
+text_overrun_behavior = 3

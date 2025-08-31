@@ -30,7 +30,7 @@ resources_spreadsheet_view/freeze_first_column=true
 [application]
 
 config/name="gd_prototype"
-run/main_scene="uid://cf8ryavb4nmac"
+run/main_scene="uid://c44ticgfpuu5t"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -38,6 +38,7 @@ config/icon="res://icon.svg"
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 SignalLens="*res://addons/signal_lens/autoload/signal_lens_autoload.gd"
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 
 [display]
 
@@ -52,7 +53,11 @@ project/assembly_name="gd_prototype"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/action_enum_generator/plugin.cfg", "res://addons/gaea/plugin.cfg", "res://addons/godot_resource_groups/plugin.cfg", "res://addons/inspector_tabs/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg", "res://addons/signal_lens/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/action_enum_generator/plugin.cfg", "res://addons/gaea/plugin.cfg", "res://addons/godot_resource_groups/plugin.cfg", "res://addons/inspector_tabs/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/signal_lens/plugin.cfg")
+
+[global_group]
+
+back=""
 
 [godot_resource_groups]
 
@@ -113,10 +118,21 @@ action={
 ]
 }
 
+[internationalization]
+
+locale/translation_remaps={
+"res://assets/prototype/localization/china.png": PackedStringArray("res://assets/prototype/localization/japan.png:ja", "res://assets/prototype/localization/britian.png:en")
+}
+locale/translations=PackedStringArray("res://assets/prototype/localization/translation.cn.translation", "res://assets/prototype/localization/translation.en.translation", "res://assets/prototype/localization/translation.ja.translation")
+
 [layer_names]
 
 2d_physics/layer_1="environment"
+2d_physics/layer_2="ground"
+2d_physics/layer_3="floor"
 2d_physics/layer_9="player"
+2d_physics/layer_10="hurt"
+2d_physics/layer_11="atk"
 
 [physics]
 

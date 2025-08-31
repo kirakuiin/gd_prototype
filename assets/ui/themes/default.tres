@@ -1,7 +1,58 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dw6belorvybsy"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dw6belorvybsy"]
 
 [ext_resource type="FontFile" uid="uid://b716t5itkq0ts" path="res://assets/ui/fonts/comic.ttf" id="1_b0f20"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0f20"]
+bg_color = Color(0.1988, 0.50552, 0.71, 1)
+border_width_bottom = 5
+border_color = Color(0.2109, 0.42636, 0.57, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0xpk"]
+bg_color = Color(0.2035, 0.4114, 0.55, 1)
+border_width_top = 5
+border_color = Color(0.2257, 0.45628, 0.61, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iiucc"]
+bg_color = Color(0.64, 0.6288, 0.5056, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wth6"]
+bg_color = Color(0.68, 0.272, 0.272, 1)
+border_width_bottom = 5
+border_color = Color(0.45, 0.18, 0.18, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypp5p"]
+bg_color = Color(0.45098, 0.180392, 0.180392, 1)
+border_width_top = 5
+border_color = Color(0.2257, 0.45628, 0.61, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [resource]
 default_font = ExtResource("1_b0f20")
 default_font_size = 16
+Button/styles/hover = SubResource("StyleBoxFlat_b0f20")
+Button/styles/normal = SubResource("StyleBoxFlat_b0f20")
+Button/styles/pressed = SubResource("StyleBoxFlat_t0xpk")
+Label/styles/normal = SubResource("StyleBoxFlat_iiucc")
+RedButton/base_type = &"Button"
+RedButton/styles/hover = SubResource("StyleBoxFlat_2wth6")
+RedButton/styles/normal = SubResource("StyleBoxFlat_2wth6")
+RedButton/styles/pressed = SubResource("StyleBoxFlat_ypp5p")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dld2mfqhykbd4" path="res://assets/prototype/minimap/Minimap.cs" id="1_2ridm"]
 [ext_resource type="TileSet" uid="uid://bqtiny4lalf88" path="res://assets/world/simple_16_tileset.tres" id="2_c0axj"]
-[ext_resource type="PackedScene" uid="uid://cy4ics6ifmm4i" path="res://assets/plane/plane.tscn" id="3_i4oa2"]
+[ext_resource type="PackedScene" uid="uid://cy4ics6ifmm4i" path="res://assets/common/plane/plane.tscn" id="3_i4oa2"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_kep3o"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_pk1a8"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_eoj5f"]

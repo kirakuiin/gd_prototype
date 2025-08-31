@@ -1,0 +1,145 @@
+[gd_scene load_steps=22 format=3 uid="uid://c44ticgfpuu5t"]
+
+[ext_resource type="Script" uid="uid://cxvykofwlvtcw" path="res://main.gd" id="1_f5uj8"]
+[ext_resource type="Script" uid="uid://ctvstxu63x2ok" path="res://assets/common/SceneCfg.gd" id="2_ymsj6"]
+[ext_resource type="PackedScene" uid="uid://cf8ryavb4nmac" path="res://assets/prototype/virtual_camera/virual_camera.tscn" id="3_fftv2"]
+[ext_resource type="PackedScene" uid="uid://bm2jumpkko8d7" path="res://assets/prototype/localization/trans_scene.tscn" id="4_6enff"]
+[ext_resource type="PackedScene" uid="uid://cxt1uewqbno0d" path="res://assets/prototype/physics/phy_scene.tscn" id="5_01hnf"]
+[ext_resource type="PackedScene" uid="uid://c3ttavvc55lyg" path="res://assets/prototype/navimesh/navi_scene.tscn" id="6_1c70x"]
+[ext_resource type="Theme" uid="uid://dw6belorvybsy" path="res://assets/ui/themes/default.tres" id="7_fftv2"]
+[ext_resource type="PackedScene" uid="uid://b5adm0mo67c53" path="res://assets/prototype/input/input.tscn" id="7_sqcjs"]
+[ext_resource type="PackedScene" uid="uid://bx18pclgq844a" path="res://assets/prototype/minimap/minimap.tscn" id="8_o7aww"]
+[ext_resource type="PackedScene" uid="uid://mbn2a17koen4" path="res://assets/prototype/procedure_generation/2d_tile.tscn" id="9_6snrc"]
+[ext_resource type="PackedScene" uid="uid://dp133jemhyu8l" path="res://assets/prototype/2.5d_scene/depth_tilemap.tscn" id="10_hjph5"]
+
+[sub_resource type="Resource" id="Resource_sqcjs"]
+script = ExtResource("2_ymsj6")
+name = "虚拟相机"
+scene = ExtResource("3_fftv2")
+metadata/_custom_type_script = "uid://ctvstxu63x2ok"
+
+[sub_resource type="Resource" id="Resource_o7aww"]
+script = ExtResource("2_ymsj6")
+name = "本地化"
+scene = ExtResource("4_6enff")
+metadata/_custom_type_script = "uid://ctvstxu63x2ok"
+
+[sub_resource type="Resource" id="Resource_6snrc"]
+script = ExtResource("2_ymsj6")
+name = "物理模拟"
+scene = ExtResource("5_01hnf")
+metadata/_custom_type_script = "uid://ctvstxu63x2ok"
+
+[sub_resource type="Resource" id="Resource_ymsj6"]
+script = ExtResource("2_ymsj6")
+name = "寻路"
+scene = ExtResource("6_1c70x")
+metadata/_custom_type_script = "uid://ctvstxu63x2ok"
+
+[sub_resource type="Resource" id="Resource_4cdww"]
+script = ExtResource("2_ymsj6")
+name = "输入"
+scene = ExtResource("7_sqcjs")
+metadata/_custom_type_script = "uid://ctvstxu63x2ok"
+
+[sub_resource type="Resource" id="Resource_uijyr"]
+script = ExtResource("2_ymsj6")
+name = "小地图"
+scene = ExtResource("8_o7aww")
+metadata/_custom_type_script = "uid://ctvstxu63x2ok"
+
+[sub_resource type="Resource" id="Resource_sxfea"]
+script = ExtResource("2_ymsj6")
+name = "程序生成tilemap"
+scene = ExtResource("9_6snrc")
+metadata/_custom_type_script = "uid://ctvstxu63x2ok"
+
+[sub_resource type="Resource" id="Resource_jrb5l"]
+script = ExtResource("2_ymsj6")
+name = "2.5d世界"
+scene = ExtResource("10_hjph5")
+metadata/_custom_type_script = "uid://ctvstxu63x2ok"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fftv2"]
+
+[sub_resource type="GDScript" id="GDScript_fftv2"]
+resource_name = "BtnItem"
+script/source = "extends Panel
+
+var _data: SceneCfg
+
+func set_data(data: SceneCfg):
+	_data = data
+	$Button.text = data.name
+	$Button.button_down.connect(_on_click)
+	visible = true
+	
+func _on_click():
+	SceneManager.change_scene(_data.scene, {\"wait_time\": 0.1, \"on_tree_enter\": _on_enter_tree})
+
+func _on_enter_tree(node):
+	var nodes = get_tree().get_nodes_in_group(\"back\")
+	if nodes:
+		nodes[0].visible = true
+		print(123)
+	else:
+		var scene := load(\"res://assets/prototype/back.tscn\") as PackedScene
+		var ins = scene.instantiate()
+		ins.call(\"init\")
+		get_tree().root.add_child(ins)
+"
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f5uj8")
+ScenesInfo = Array[ExtResource("2_ymsj6")]([SubResource("Resource_sqcjs"), SubResource("Resource_o7aww"), SubResource("Resource_6snrc"), SubResource("Resource_ymsj6"), SubResource("Resource_4cdww"), SubResource("Resource_uijyr"), SubResource("Resource_sxfea"), SubResource("Resource_jrb5l")])
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -137.0
+offset_right = 138.0
+offset_bottom = 59.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[center][font_size=40]原型列表[/font_size][/center]"
+
+[node name="Control" type="Panel" parent="."]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_top = 112.0
+offset_right = 192.0
+offset_bottom = 162.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fftv2")
+script = SubResource("GDScript_fftv2")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_fftv2")
+theme_type_variation = &"RedButton"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.207407
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+metadata/_edit_use_anchors_ = true

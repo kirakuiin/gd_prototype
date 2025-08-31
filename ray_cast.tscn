@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://48y11bews0w0"]
+
+[node name="RayCast2D" type="RayCast2D"]
+target_position = Vector2(389, 144)
+
+[node name="Line2D" type="Line2D" parent="."]

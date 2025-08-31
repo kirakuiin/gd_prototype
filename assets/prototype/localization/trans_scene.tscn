@@ -1,0 +1,138 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm2jumpkko8d7"]
+
+[ext_resource type="Script" uid="uid://77idwpxoqetf" path="res://assets/prototype/localization/trans_scene.gd" id="1_vyrw4"]
+[ext_resource type="Theme" uid="uid://dw6belorvybsy" path="res://assets/ui/themes/default.tres" id="2_7omle"]
+[ext_resource type="Texture2D" uid="uid://c552uj0i824vj" path="res://assets/prototype/localization/china.png" id="2_40kpi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7omle"]
+bg_color = Color(0.272, 0.68, 0.6324, 1)
+border_width_bottom = 5
+border_color = Color(0.180392, 0.45098, 0.419608, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5rl1"]
+bg_color = Color(0.180392, 0.45098, 0.419608, 1)
+border_width_top = 5
+border_color = Color(0.2257, 0.45628, 0.61, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvd82"]
+bg_color = Color(0.270588, 0.678431, 0.631373, 1)
+border_width_bottom = 5
+border_color = Color(0.18, 0.45, 0.4185, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="TransScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vyrw4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 310.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("2_7omle")
+text = "简体中文"
+
+[node name="Button1" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("2_7omle")
+theme_type_variation = &"RedButton"
+text = "英语"
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("2_7omle")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7omle")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w5rl1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gvd82")
+text = "日语"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 54.0
+offset_right = 41.0
+offset_bottom = 94.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "start_game"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "continue"
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "exit"
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "pause"
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "back"
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+auto_translate_mode = 2
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_7omle")
+text = "不会被翻译(Auto Translate disable):"
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "start_game"
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -509.0
+offset_top = 35.0
+offset_bottom = 84.0
+grow_horizontal = 0
+text = "1. tr接口里面的context参数，只对gettext生成的po文件生效，csv不行
+2. 图标，音频，文本的国际化在项目->项目设置->本地化中进行设置"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 16.0
+offset_right = 440.0
+offset_bottom = 116.0
+texture = ExtResource("2_40kpi")

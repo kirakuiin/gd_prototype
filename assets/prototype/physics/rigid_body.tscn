@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkv0f6f3prfm8"]
+
+[ext_resource type="Script" uid="uid://crq4n5ri17qkr" path="res://assets/prototype/physics/rigid_body.gd" id="1_1jyyo"]
+[ext_resource type="Shader" uid="uid://c3t1nrnvtkb05" path="res://assets/prototype/physics/circle_color.gdshader" id="2_nqsa0"]
+[ext_resource type="Texture2D" uid="uid://cev2p45ms0un7" path="res://assets/prototype/2.5d_scene/Water Background color.png" id="3_nvcv3"]
+[ext_resource type="Script" uid="uid://r7lmumsato60" path="res://assets/prototype/physics/mouse_draggable_body_2d.gd" id="4_5ge64"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l6cym"]
+resource_local_to_scene = true
+shader = ExtResource("2_nqsa0")
+shader_parameter/color = Color(0.516517, 0.487806, 0.893241, 1)
+shader_parameter/radius = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tmjf7"]
+radius = 32.42
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dpo4i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wyaba"]
+
+[node name="RigidBody" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 3
+script = ExtResource("1_1jyyo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_l6cym")
+texture = ExtResource("3_nvcv3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tmjf7")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -41.0
+offset_top = -45.0
+offset_right = 41.0
+offset_bottom = -22.0
+text = "RigidBody"
+horizontal_alignment = 1
+
+[node name="Label3" type="LineEdit" parent="."]
+offset_left = 19.0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 47.0
+theme_override_constants/minimum_character_width = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dpo4i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wyaba")
+placeholder_text = "m"
+alignment = 1
+max_length = 2
+
+[node name="Label2" type="LineEdit" parent="."]
+offset_left = -37.0
+offset_top = 15.0
+offset_right = -16.0
+offset_bottom = 46.0
+theme_override_constants/minimum_character_width = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dpo4i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wyaba")
+placeholder_text = "l"
+alignment = 1
+max_length = 2
+
+[node name="DragComp" type="Node2D" parent="."]
+script = ExtResource("4_5ge64")

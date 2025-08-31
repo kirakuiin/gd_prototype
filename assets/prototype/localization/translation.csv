@@ -1,0 +1,12 @@
+keys,cn,en,ja
+start_game,开始游戏,Start Game,ゲーム開始
+continue,继续,Continue,続ける
+settings,设置,Settings,設定
+exit,退出,Exit,終了
+pause,暂停,Pause,一時停止
+resume,继续游戏,Resume,再開
+save,保存,Save,セーブ
+load,加载,Load,ロード
+back,返回,Back,戻る
+confirm,确认,Confirm,確認
+fmt,{a} 是 {b},{a} is {b},{a} は {b}

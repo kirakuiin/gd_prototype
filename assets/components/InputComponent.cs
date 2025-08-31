@@ -80,7 +80,10 @@ public partial class InputComponent : Node
 			switch (mapping.InputType)
 			{
 				// 处理持续按住的按键
-				case InputActionMapping.EInputType.Held when Input.IsActionPressed(mapping.ActionName):
+				case InputActionMapping.EInputType.Held when Input.IsActionJustPressed(mapping.ActionName):
+					TriggerResponse(mapping, 1);
+					break;
+				case InputActionMapping.EInputType.Held when Input.IsActionJustReleased(mapping.ActionName):
 					TriggerResponse(mapping, 0);
 					break;
 				// 处理模拟输入（摇杆）
@@ -112,20 +115,20 @@ public partial class InputComponent : Node
 	
 	public override string[] _GetConfigurationWarnings()
 	{
-      var warnings = new System.Collections.Generic.List<string>();
+	  var warnings = new System.Collections.Generic.List<string>();
 
-      if (InputSet == null)
-      {
-          warnings.Add("未指定输入集资源 (InputSet)");
-      }
-      else
-      {
-          if (InputSet.ActionMappings.Count == 0)
-          {
-              warnings.Add("输入集不包含任何动作映射");
-          }
-      }
+	  if (InputSet == null)
+	  {
+		  warnings.Add("未指定输入集资源 (InputSet)");
+	  }
+	  else
+	  {
+		  if (InputSet.ActionMappings.Count == 0)
+		  {
+			  warnings.Add("输入集不包含任何动作映射");
+		  }
+	  }
 
-      return warnings.ToArray();
+	  return warnings.ToArray();
   }
 }

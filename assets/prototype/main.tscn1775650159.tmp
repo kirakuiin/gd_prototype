@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://djhe6kq1xeqfk"]
+
+[ext_resource type="Script" uid="uid://cxvykofwlvtcw" path="res://assets/prototype/main.gd" id="1_f5uj8"]
+[ext_resource type="Script" uid="uid://ctvstxu63x2ok" path="res://assets/common/SceneCfg.gd" id="2_ymsj6"]
+[ext_resource type="PackedScene" uid="uid://cf8ryavb4nmac" path="res://assets/prototype/virtual_camera/virual_camera.tscn" id="3_fftv2"]
+[ext_resource type="PackedScene" uid="uid://bm2jumpkko8d7" path="res://assets/prototype/localization/trans_scene.tscn" id="4_6enff"]
+[ext_resource type="PackedScene" uid="uid://cxt1uewqbno0d" path="res://assets/prototype/physics/phy_scene.tscn" id="5_01hnf"]
+[ext_resource type="PackedScene" uid="uid://c3ttavvc55lyg" path="res://assets/prototype/navimesh/navi_scene.tscn" id="6_1c70x"]
+[ext_resource type="Theme" uid="uid://dw6belorvybsy" path="res://assets/ui/themes/default.tres" id="7_fftv2"]
+
+[sub_resource type="Resource" id="Resource_sqcjs"]
+script = ExtResource("2_ymsj6")
+name = "虚拟相机"
+scene = ExtResource("3_fftv2")
+metadata/_custom_type_script = "uid://ctvstxu63x2ok"
+
+[sub_resource type="Resource" id="Resource_o7aww"]
+script = ExtResource("2_ymsj6")
+name = "本地化"
+scene = ExtResource("4_6enff")
+metadata/_custom_type_script = "uid://ctvstxu63x2ok"
+
+[sub_resource type="Resource" id="Resource_6snrc"]
+script = ExtResource("2_ymsj6")
+name = "物理模拟"
+scene = ExtResource("5_01hnf")
+metadata/_custom_type_script = "uid://ctvstxu63x2ok"
+
+[sub_resource type="Resource" id="Resource_ymsj6"]
+script = ExtResource("2_ymsj6")
+name = "寻路"
+scene = ExtResource("6_1c70x")
+metadata/_custom_type_script = "uid://ctvstxu63x2ok"
+
+[node name="Main" type="Control" groups=["scene_manager_entity_nodes"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f5uj8")
+ScenesInfo = Array[ExtResource("2_ymsj6")]([SubResource("Resource_sqcjs"), SubResource("Resource_o7aww"), SubResource("Resource_6snrc"), SubResource("Resource_ymsj6")])
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -137.0
+offset_right = 138.0
+offset_bottom = 59.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[center][font_size=40]原型列表[/font_size][/center]"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.207407
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 29.0
+offset_bottom = 8.0
+theme = ExtResource("7_fftv2")

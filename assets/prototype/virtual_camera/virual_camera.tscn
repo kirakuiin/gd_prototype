@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dwc5fh6k2og0r" path="res://assets/prototype/virtual_camera/VirualCamera.cs" id="1_al0l6"]
 [ext_resource type="TileSet" uid="uid://bqtiny4lalf88" path="res://assets/world/simple_16_tileset.tres" id="1_i33ca"]
-[ext_resource type="Texture2D" uid="uid://d3h8ecjm6ecsb" path="res://assets/plane/ships_packed.png" id="2_bfqqx"]
-[ext_resource type="PackedScene" uid="uid://cy4ics6ifmm4i" path="res://assets/plane/plane.tscn" id="2_jqaqp"]
+[ext_resource type="Texture2D" uid="uid://d3h8ecjm6ecsb" path="res://assets/common/plane/ships_packed.png" id="2_bfqqx"]
+[ext_resource type="PackedScene" uid="uid://cy4ics6ifmm4i" path="res://assets/common/plane/plane.tscn" id="2_jqaqp"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_bfqqx"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_al0l6"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_1jk8s"]
@@ -209,8 +209,9 @@ tween_resource = SubResource("Resource_qpxtx")
 auto_zoom = true
 auto_zoom_max = 3.0
 auto_zoom_margin = Vector4(10, 10, 10, 10)
-dead_zone_width = 0.248
-dead_zone_height = 0.255
+dead_zone_width = 0.285
+dead_zone_height = 0.281
+show_viewfinder_in_play = true
 noise_emitter_layer = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="FrameCamera2D"]
